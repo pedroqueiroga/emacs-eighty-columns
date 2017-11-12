@@ -66,10 +66,10 @@ of a buffer."
   (if eighty-column-rule-mode
       (progn
 	(80-recalculate)
-	(add-hook 'window-size-change-functions '80-recalculate nil t)
+;	(add-hook 'window-size-change-functions '80-recalculate nil t)
 	(add-hook 'window-configuration-change-hook '80-recalculate nil t))
     (80-remove)
-    (remove-hook 'window-size-change-functions '80-recalculate t)
+;    (remove-hook 'window-size-change-functions '80-recalculate t)
     (remove-hook 'window-configuration-change-hook '80-recalculate t)))
 
 ;;;###autoload
