@@ -33,7 +33,8 @@
   (80-remove)
   (let ((margins (window-margins)))
     (if (not (= (window-width) 80))
-	(set-window-margins (get-buffer-window) 0 (max (- (window-width) 80) 0)))))
+	(set-window-margins
+	 (get-buffer-window) 0 (max (- (window-width) 80) 0)))))
 
 (defun 80-editting-columns-balanced ()
   "Set both window margins so the editable space is only 80 columns."
