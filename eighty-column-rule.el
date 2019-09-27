@@ -52,6 +52,12 @@
       (80-editting-columns-balanced)
     (80-editting-columns)))
 
+(defun split-window-right-ignore (&optional size)
+  (if (car size) size (list (/ (window-total-width) 2))))
+
+(advice-add 'split-window-right :filter-args
+            'split-window-right-ignore)
+
 ;;;###autoload
 (define-minor-mode eighty-column-rule-mode
   "Toggle Eighty-Column-Rule mode.
@@ -66,10 +72,10 @@ of a buffer."
   (if eighty-column-rule-mode
       (progn
 	(80-recalculate)
-;	(add-hook 'window-size-change-functions '80-recalculate nil t)
+	(add-hook 'window-size-change-functions '80-recalculate nil t)
 	(add-hook 'window-configuration-change-hook '80-recalculate nil t))
     (80-remove)
-;    (remove-hook 'window-size-change-functions '80-recalculate t)
+    (remove-hook 'window-size-change-functions '80-recalculate t)
     (remove-hook 'window-configuration-change-hook '80-recalculate t)))
 
 ;;;###autoload
